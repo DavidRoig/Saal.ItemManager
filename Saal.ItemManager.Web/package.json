@@ -1,0 +1,21 @@
+{
+  "name": "saal.itemmanager.web",
+  "version": "1.0.0",
+  "description": "Frontend for Saal interview test designed with React.Js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Roig",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
