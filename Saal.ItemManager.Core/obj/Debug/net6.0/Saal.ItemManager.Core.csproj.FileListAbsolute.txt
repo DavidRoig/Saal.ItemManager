@@ -1,0 +1,12 @@
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\bin\Debug\net6.0\Saal.ItemManager.Core.deps.json
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\bin\Debug\net6.0\Saal.ItemManager.Core.dll
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\bin\Debug\net6.0\Saal.ItemManager.Core.pdb
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\Saal.ItemManager.Core.csproj.AssemblyReference.cache
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\Saal.ItemManager.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\Saal.ItemManager.Core.AssemblyInfoInputs.cache
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\Saal.ItemManager.Core.AssemblyInfo.cs
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\Saal.ItemManager.Core.csproj.CoreCompileInputs.cache
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\Saal.ItemManager.Core.dll
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\refint\Saal.ItemManager.Core.dll
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\Saal.ItemManager.Core.pdb
+D:\projects\interview-tests\Saal Digital\ItemManager\Saal.ItemManager\Saal.ItemManager.Core\obj\Debug\net6.0\ref\Saal.ItemManager.Core.dll

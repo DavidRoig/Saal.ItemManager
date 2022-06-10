@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Api", "Saal.ItemManager.Api\Saal.ItemManager.Api.csproj", "{CE6CCA0D-39AC-453D-9C07-78E577132446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Core", "Saal.ItemManager.Core\Saal.ItemManager.Core.csproj", "{8FFE47C9-3119-424A-B635-327C3CB55676}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE6CCA0D-39AC-453D-9C07-78E577132446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6CCA0D-39AC-453D-9C07-78E577132446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6CCA0D-39AC-453D-9C07-78E577132446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6CCA0D-39AC-453D-9C07-78E577132446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FFE47C9-3119-424A-B635-327C3CB55676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FFE47C9-3119-424A-B635-327C3CB55676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FFE47C9-3119-424A-B635-327C3CB55676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FFE47C9-3119-424A-B635-327C3CB55676}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61DCD08B-56A2-440A-9E3A-EE9CA77ECAEF}
+	EndGlobalSection
+EndGlobal

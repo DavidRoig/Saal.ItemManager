@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pbLEWucbL3CTo3DQi+fG8n7hh69WkTgaHneR6DvnE90zsBcm5z4yyqa3GlMZid3o1PFZkqtwMLk2+GUfsbtHKQ==",
+  "success": true,
+  "projectFilePath": "D:\\projects\\interview-tests\\Saal Digital\\ItemManager\\Saal.ItemManager\\Saal.ItemManager.Core\\Saal.ItemManager.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\David\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
