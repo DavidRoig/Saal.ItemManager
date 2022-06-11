@@ -3,8 +3,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { resolve } = require("path");
 
 module.exports = {
+  resolve: {
+    extensions: [".js", ".ts.", ".tsx"],
+  },
   entry: {
-    app: ["./src/index.js"],
+    app: ["./src/index.tsx"],
   },
   output: {
     filename: "[name].[chunkhash].js",
@@ -13,17 +16,30 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },
       {
         test: /\.css$/,
+        // exclude: /node_modules/, // DRH agregar??
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+          },
+        ],
+      },
+      {
+        test: /\.scss$/, // DRH Quitar soporte para saass??
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
           },
         ],
       },
