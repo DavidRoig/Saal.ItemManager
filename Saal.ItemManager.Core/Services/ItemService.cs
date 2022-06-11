@@ -4,8 +4,14 @@ namespace Saal.ItemManager.Core.Services
 {
     internal class ItemService : IItemService
     {
-
-        private readonly IList<Item> DummyResult = new List<Item> { new Item { Name = "Dummy Name"}};
+        private readonly IList<Item> DummyResult = new List<Item> {
+            new Item { Name = "Dummy Name 1", Description = "Dummy description", Type = "DummyType"},
+            new Item { Name = "Dummy Name 2", Description = "Dummy description", Type = "DummyType"},
+            new Item { Name = "Dummy Name 3", Description = "Dummy description", Type = "DummyType"},
+            new Item { Name = "Dummy Name 4", Description = "Dummy description", Type = "DummyType"},
+            new Item { Name = "Dummy Name 5", Description = "Dummy description", Type = "DummyType"},
+            new Item { Name = "Dummy Name 6", Description = "Dummy description", Type = "DummyType"},
+        };
 
         public IList<Item> Get()
         {

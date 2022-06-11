@@ -16,17 +16,17 @@ namespace Saal.ItemManager.Api.Controllers
         }
 
         //GET: ItemController/Details/5
-        [HttpGet]
-        public Item Get(int id)
-        {
-            return ItemPersister.Get(id);
-        }
-
         //[HttpGet]
-        //public IList<Item> Get()
+        //public Item Get(int id)
         //{
-        //    return ItemPersister.Get();
+        //    return ItemPersister.Get(id);
         //}
+
+        [HttpGet]
+        public IList<Item> Get()
+        {
+            return ItemPersister.Get();
+        }
 
         // POST: ItemController/Create
         [HttpPost]

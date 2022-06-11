@@ -4,7 +4,7 @@ const { resolve } = require("path");
 
 module.exports = {
   resolve: {
-    extensions: [".js", ".ts.", ".tsx"],
+    extensions: [".js", ".ts", ".tsx"],
   },
   entry: {
     app: ["./src/index.tsx"],
@@ -19,16 +19,6 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-      },
-      {
-        test: /\.css$/,
-        // exclude: /node_modules/, // DRH agregar??
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-          },
-        ],
       },
       {
         test: /\.scss$/, // DRH Quitar soporte para saass??

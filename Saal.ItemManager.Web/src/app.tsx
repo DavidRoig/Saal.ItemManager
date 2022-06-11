@@ -1,8 +1,6 @@
 import React from "react";
-
-import { HelloComponent } from "./components/helloComponent";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ItemComponent } from "./item";
 
 export const App = () => {
-    return (<HelloComponent />);
-}
+  return <ItemComponent />;
+};

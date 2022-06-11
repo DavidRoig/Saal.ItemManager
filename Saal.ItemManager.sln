@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Api", "Saa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Core", "Saal.ItemManager.Core\Saal.ItemManager.Core.csproj", "{8FFE47C9-3119-424A-B635-327C3CB55676}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Web", "Saal.ItemManager.Web\Saal.ItemManager.Web.csproj", "{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,9 @@ Global
 		{8FFE47C9-3119-424A-B635-327C3CB55676}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FFE47C9-3119-424A-B635-327C3CB55676}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FFE47C9-3119-424A-B635-327C3CB55676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
