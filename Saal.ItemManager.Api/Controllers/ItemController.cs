@@ -5,49 +5,66 @@ using Saal.ItemManager.Core.Services;
 namespace Saal.ItemManager.Api.Controllers
 {
     [ApiController]
-    [Route("Items")]
+    [Route("items")]
     public class ItemController : ControllerBase
     {
-        private readonly IItemService ItemPersister;
+        private readonly IItemService ItemService;
 
-        public ItemController(IItemService itemPersister)
+        public ItemController(IItemService itemService)
         {
-            ItemPersister = itemPersister;
+            ItemService = itemService;
         }
 
-        //GET: ItemController/Details/5
-        //[HttpGet]
-        //public Item Get(int id)
-        //{
-        //    return ItemPersister.Get(id);
-        //}
-
+        // GET: Items
         [HttpGet]
-        public IList<Item> Get()
+        [Route("")]
+        public ActionResult<List<Item>> Get() => Ok(ItemService.Get());
+
+        // GET: items/{id}
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult<Item> Get(int id)
         {
-            return ItemPersister.Get();
+            var result = ItemService.Get(id);
+
+            if (result == null)
+                return NotFound();
+
+            return result;
         }
 
-        // POST: ItemController/Create
+        // POST: items
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create()
+        //[ValidateAntiForgeryToken]
+        public ActionResult<int> Create(ItemRequest item)
         {
-            return Ok();
+            var result = ItemService.Create(item);
+
+            return Ok(result);
         }
 
-        // POST: ItemController/Edit/5
+        // PUT: items/{id}
         [HttpPut]
-        [ValidateAntiForgeryToken]
-        public ActionResult Update(int id, IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Update(int id, ItemRequest item)
         {
+            var isItemFound = ItemService.Update(id, item);
+
+            if (!isItemFound)
+                return NotFound();
+
             return Ok();
         }
 
-        // GET: ItemController/Delete/5
+        // DELETE: items/5
         [HttpDelete]
         public ActionResult Delete(int id)
         {
+            var isItemFound = ItemService.Delete(id);
+
+            if (!isItemFound)
+                return NotFound();
+
             return Ok();
         }
     }

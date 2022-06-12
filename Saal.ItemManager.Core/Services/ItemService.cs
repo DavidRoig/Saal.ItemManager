@@ -4,38 +4,68 @@ namespace Saal.ItemManager.Core.Services
 {
     internal class ItemService : IItemService
     {
-        private readonly IList<Item> DummyResult = new List<Item> {
-            new Item { Name = "Dummy Name 1", Description = "Dummy description", Type = "DummyType"},
-            new Item { Name = "Dummy Name 2", Description = "Dummy description", Type = "DummyType"},
-            new Item { Name = "Dummy Name 3", Description = "Dummy description", Type = "DummyType"},
-            new Item { Name = "Dummy Name 4", Description = "Dummy description", Type = "DummyType"},
-            new Item { Name = "Dummy Name 5", Description = "Dummy description", Type = "DummyType"},
-            new Item { Name = "Dummy Name 6", Description = "Dummy description", Type = "DummyType"},
+        private readonly List<Item> ItemStorage = new List<Item> {
+            Item.Create("Dummy Name 1", "Dummy description", "DummyType"),
+            Item.Create("Dummy Name 2", "Dummy description", "DummyType"),
         };
 
-        public IList<Item> Get()
+        public List<Item> Get() => ItemStorage;
+
+        public Item? Get(int id) => FindItem(id);
+
+
+        public int Create(ItemRequest item)
         {
-            return DummyResult;
-        }
-        public Item Get(int id)
-        {
-            return DummyResult.First();
+            var newItem = Item.Create(item);
+
+            ItemStorage.Add(newItem);
+
+            return newItem.Id;
         }
 
-        public int Create(Item item)
+        public bool Update(int id, ItemRequest item)
         {
-            return (10);
+            var result = FindItem(id);
+
+            if (result == null)
+                return false;
+
+            Item.Update(result, item);
+
+            return true;
         }
 
-        public void Edit(Item item)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var recordsDeleted = ItemStorage.RemoveAll(x => x.Id.Equals(id));
+
+            return recordsDeleted > 0;
         }
 
-        public void Delete(Item item)
+        public bool AddRelation(int mainItemId, int targetItemId)
         {
-            throw new NotImplementedException();
+            var result = FindItem(mainItemId);
+
+            if (result == null)
+                return false;
+
+            result.Relations.Add(targetItemId);
+
+            return true;
         }
 
+        public bool RemoveRelation(int mainItemId, int targetItemId)
+        {
+            var result = FindItem(mainItemId);
+
+            if (result == null)
+                return false;
+
+            result.Relations.RemoveAll(x => x.Equals(targetItemId));
+
+            return true;
+        }
+
+        private Item? FindItem(int id) => ItemStorage.FirstOrDefault(x => x.Id.Equals(id));
     }
 }
