@@ -4,12 +4,12 @@ namespace Saal.ItemManager.Core.Services
 {
     public interface IItemService
     {
-        Item? Get(int itemId);
-        List<Item> Get();
-        int Create(ItemRequest item);
-        bool Update(int itemId, ItemRequest item);
-        bool Delete(int itemId);
-        bool AddRelation(int mainItemId, int targetItemId);
-        bool RemoveRelation(int mainItemId, int targetItemId);
+        Task<Item?> GetAsync(int itemId);
+        Task<List<Item>> GetAllAsync();
+        Task<int> CreateAsync(ItemRequest item);
+        Task<bool> UpdateAsync(int itemId, ItemRequest item);
+        Task<bool> DeleteAsync(int itemId);
+        Task<bool> AddRelationAsync(int mainItemId, int targetItemId);
+        Task<bool> RemoveRelationAsync(int mainItemId, int targetItemId);
     }
 }

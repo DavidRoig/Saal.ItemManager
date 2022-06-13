@@ -2,12 +2,10 @@
 {
     public class Item : ItemRequest
     {
-        private Item() { }
+        public int Id { get; set; }
+        public List<int> Relations { get; set; } = new List<int>();
 
-        public int Id { get; private set; }
-        public List<int> Relations { get; } = new List<int>();
-
-        internal static Item Create(ItemRequest item) => Create(item.Name, item.Description, item.Type);
+        public static Item Create(ItemRequest item) => Create(item.Name, item.Description, item.Type);
 
         internal static Item Create(string name, string description, string type) => new Item
         {

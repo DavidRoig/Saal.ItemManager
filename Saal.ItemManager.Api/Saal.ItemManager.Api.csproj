@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Saal.ItemManager.Core\Saal.ItemManager.Core.csproj" />
+    <ProjectReference Include="..\Saal.ItemManager.Infrastructure\Saal.ItemManager.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

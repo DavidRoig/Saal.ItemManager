@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Api", "Saal.ItemManager.Api\Saal.ItemManager.Api.csproj", "{CE6CCA0D-39AC-453D-9C07-78E577132446}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saal.ItemManager.Api", "Saal.ItemManager.Api\Saal.ItemManager.Api.csproj", "{CE6CCA0D-39AC-453D-9C07-78E577132446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Core", "Saal.ItemManager.Core\Saal.ItemManager.Core.csproj", "{8FFE47C9-3119-424A-B635-327C3CB55676}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saal.ItemManager.Core", "Saal.ItemManager.Core\Saal.ItemManager.Core.csproj", "{8FFE47C9-3119-424A-B635-327C3CB55676}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Web", "Saal.ItemManager.Web\Saal.ItemManager.Web.csproj", "{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saal.ItemManager.Web", "Saal.ItemManager.Web\Saal.ItemManager.Web.csproj", "{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Infrastructure", "Saal.ItemManager.Infrastructure\Saal.ItemManager.Infrastructure.csproj", "{3B4E9008-5AF0-4A8E-85A6-E57455A08A08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saal.ItemManager.Core.UnitTest", "Saal.ItemManager.Core.Test\Saal.ItemManager.Core.UnitTest.csproj", "{3D8481C1-8896-434B-A493-D557712F8D91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +30,14 @@ Global
 		{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F1E8BC4-5151-4862-A7CE-0AF9BEEBCE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B4E9008-5AF0-4A8E-85A6-E57455A08A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4E9008-5AF0-4A8E-85A6-E57455A08A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B4E9008-5AF0-4A8E-85A6-E57455A08A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B4E9008-5AF0-4A8E-85A6-E57455A08A08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D8481C1-8896-434B-A493-D557712F8D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D8481C1-8896-434B-A493-D557712F8D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D8481C1-8896-434B-A493-D557712F8D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D8481C1-8896-434B-A493-D557712F8D91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

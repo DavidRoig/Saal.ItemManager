@@ -18,9 +18,9 @@ namespace Saal.ItemManager.Api.Controllers
         // PUT: items/{itemId}/relations/{targetItemId}
         [HttpPut]
         [Route("{targetItemId}")]
-        public ActionResult Create(int mainItemId, int targetItemId)
+        public async Task<ActionResult> CreateAsync(int mainItemId, int targetItemId)
         {
-            var success = ItemService.AddRelation(mainItemId, targetItemId);
+            var success = await ItemService.AddRelationAsync(mainItemId, targetItemId);
 
             if (!success)
                 return NotFound();
@@ -31,9 +31,9 @@ namespace Saal.ItemManager.Api.Controllers
         // DELETE: items/{itemId}/relations/{targetItemId}
         [HttpDelete]
         [Route("{targetItemId}")]
-        public ActionResult Delete(int parentItemId, int childItemId)
+        public async Task<ActionResult> DeleteAsync(int parentItemId, int childItemId)
         {
-            var isItemFound = ItemService.RemoveRelation(parentItemId, childItemId);
+            var isItemFound = await ItemService.RemoveRelationAsync(parentItemId, childItemId);
 
             if (!isItemFound)
                 return NotFound();

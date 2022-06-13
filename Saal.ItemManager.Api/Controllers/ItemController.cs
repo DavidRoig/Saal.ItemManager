@@ -8,24 +8,24 @@ namespace Saal.ItemManager.Api.Controllers
     [Route("items")]
     public class ItemController : ControllerBase
     {
-        private readonly IItemService ItemService;
+        private readonly IItemService _itemService;
 
         public ItemController(IItemService itemService)
         {
-            ItemService = itemService;
+            _itemService = itemService;
         }
 
         // GET: Items
         [HttpGet]
         [Route("")]
-        public ActionResult<List<Item>> Get() => Ok(ItemService.Get());
+        public async Task<ActionResult<List<Item>>> GetAsync() => Ok(await _itemService.GetAllAsync());
 
         // GET: items/{id}
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Item> Get(int id)
+        public async Task<ActionResult<Item>> GetAsync(int id)
         {
-            var result = ItemService.Get(id);
+            var result = await _itemService.GetAsync(id);
 
             if (result == null)
                 return NotFound();
@@ -36,9 +36,9 @@ namespace Saal.ItemManager.Api.Controllers
         // POST: items
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult<int> Create(ItemRequest item)
+        public async Task<ActionResult<int>> CreateAsync(ItemRequest item)
         {
-            var result = ItemService.Create(item);
+            var result = await _itemService.CreateAsync(item);
 
             return Ok(result);
         }
@@ -46,9 +46,9 @@ namespace Saal.ItemManager.Api.Controllers
         // PUT: items/{id}
         [HttpPut]
         //[ValidateAntiForgeryToken]
-        public ActionResult Update(int id, ItemRequest item)
+        public async Task<ActionResult> UpdateAsync(int id, ItemRequest item)
         {
-            var isItemFound = ItemService.Update(id, item);
+            var isItemFound = await _itemService.UpdateAsync(id, item);
 
             if (!isItemFound)
                 return NotFound();
@@ -58,9 +58,9 @@ namespace Saal.ItemManager.Api.Controllers
 
         // DELETE: items/5
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            var isItemFound = ItemService.Delete(id);
+            var isItemFound = await _itemService.DeleteAsync(id);
 
             if (!isItemFound)
                 return NotFound();

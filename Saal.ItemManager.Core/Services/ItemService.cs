@@ -1,31 +1,31 @@
 ﻿using Saal.ItemManager.Core.Models;
+using Saal.ItemManager.Core.Repositories;
 
 namespace Saal.ItemManager.Core.Services
 {
-    internal class ItemService : IItemService
+    public class ItemService : IItemService
     {
-        private readonly List<Item> ItemStorage = new List<Item> {
-            Item.Create("Dummy Name 1", "Dummy description", "DummyType"),
-            Item.Create("Dummy Name 2", "Dummy description", "DummyType"),
-        };
-
-        public List<Item> Get() => ItemStorage;
-
-        public Item? Get(int id) => FindItem(id);
-
-
-        public int Create(ItemRequest item)
+        private readonly IItemRepository _itemRepository;
+        
+        public ItemService(IItemRepository itemRepository)
         {
-            var newItem = Item.Create(item);
-
-            ItemStorage.Add(newItem);
-
-            return newItem.Id;
+            _itemRepository = itemRepository;
         }
 
-        public bool Update(int id, ItemRequest item)
+        public async Task<List<Item>> GetAllAsync() => await _itemRepository.GetAllAsync();
+
+        public async Task<Item?> GetAsync(int id) => await _itemRepository.GetAsync(id);
+
+        public async Task<int> CreateAsync(ItemRequest item)
         {
-            var result = FindItem(id);
+            var itemId = await _itemRepository.CreateAsync(item);
+
+            return itemId;
+        }
+
+        public async Task<bool> UpdateAsync(int id, ItemRequest item)
+        {
+            var result = await _itemRepository.GetAsync(id);
 
             if (result == null)
                 return false;
@@ -35,16 +35,16 @@ namespace Saal.ItemManager.Core.Services
             return true;
         }
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            var recordsDeleted = ItemStorage.RemoveAll(x => x.Id.Equals(id));
+            var recordsDeleted = await _itemRepository.DeleteAsync(id);
 
             return recordsDeleted > 0;
         }
 
-        public bool AddRelation(int mainItemId, int targetItemId)
+        public async Task<bool> AddRelationAsync(int mainItemId, int targetItemId)
         {
-            var result = FindItem(mainItemId);
+            var result = await _itemRepository.GetAsync(mainItemId); 
 
             if (result == null)
                 return false;
@@ -54,9 +54,9 @@ namespace Saal.ItemManager.Core.Services
             return true;
         }
 
-        public bool RemoveRelation(int mainItemId, int targetItemId)
+        public async Task<bool> RemoveRelationAsync(int mainItemId, int targetItemId)
         {
-            var result = FindItem(mainItemId);
+            var result = await _itemRepository.GetAsync(mainItemId);
 
             if (result == null)
                 return false;
@@ -65,7 +65,5 @@ namespace Saal.ItemManager.Core.Services
 
             return true;
         }
-
-        private Item? FindItem(int id) => ItemStorage.FirstOrDefault(x => x.Id.Equals(id));
     }
 }

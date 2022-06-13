@@ -1,4 +1,5 @@
-using Saal.ItemManager.Core;
+using Saal.ItemManager.Api;
+
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 DependencyInjection.ConfigureServices(builder.Services);
+DependencyInjection.ConfigureRepositories(builder.Services);
 
 var app = builder.Build();
 
