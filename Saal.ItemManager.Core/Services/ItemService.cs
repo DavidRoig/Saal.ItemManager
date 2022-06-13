@@ -6,7 +6,7 @@ namespace Saal.ItemManager.Core.Services
     public class ItemService : IItemService
     {
         private readonly IItemRepository _itemRepository;
-        
+
         public ItemService(IItemRepository itemRepository)
         {
             _itemRepository = itemRepository;
@@ -18,19 +18,26 @@ namespace Saal.ItemManager.Core.Services
 
         public async Task<int> CreateAsync(ItemRequest item)
         {
-            var itemId = await _itemRepository.CreateAsync(item);
+            var itemList = await _itemRepository.GetAllAsync();
 
-            return itemId;
+            var newItem = Item.Create(item);
+            itemList.Add(newItem);
+
+            await _itemRepository.SaveAsync(itemList);
+
+            return newItem.Id;
         }
 
         public async Task<bool> UpdateAsync(int id, ItemRequest item)
         {
-            var result = await _itemRepository.GetAsync(id);
+            var itemList = await _itemRepository.GetAllAsync();
 
-            if (result == null)
+            var index = itemList.FindIndex(x => x.Id.Equals(id));
+            if (index < 0)
                 return false;
 
-            Item.Update(result, item);
+            Item.Update(itemList[index], item);
+            await _itemRepository.SaveAsync(itemList);
 
             return true;
         }
@@ -44,24 +51,28 @@ namespace Saal.ItemManager.Core.Services
 
         public async Task<bool> AddRelationAsync(int mainItemId, int targetItemId)
         {
-            var result = await _itemRepository.GetAsync(mainItemId); 
+            var itemList = await _itemRepository.GetAllAsync();
 
-            if (result == null)
+            var index = itemList.FindIndex(x => x.Id.Equals(mainItemId));
+            if (index < 0)
                 return false;
 
-            result.Relations.Add(targetItemId);
+            itemList[index].Relations.Add(targetItemId);
+            await _itemRepository.SaveAsync(itemList);
 
             return true;
         }
 
         public async Task<bool> RemoveRelationAsync(int mainItemId, int targetItemId)
         {
-            var result = await _itemRepository.GetAsync(mainItemId);
+            var itemList = await _itemRepository.GetAllAsync();
 
-            if (result == null)
+            var index = itemList.FindIndex(x => x.Id.Equals(mainItemId));
+            if (index < 0)
                 return false;
 
-            result.Relations.RemoveAll(x => x.Equals(targetItemId));
+            itemList[index].Relations.RemoveAll(x => x.Equals(targetItemId));
+            await _itemRepository.SaveAsync(itemList);
 
             return true;
         }

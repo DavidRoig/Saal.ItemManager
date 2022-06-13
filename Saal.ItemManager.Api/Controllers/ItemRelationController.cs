@@ -15,7 +15,7 @@ namespace Saal.ItemManager.Api.Controllers
             ItemService = itemService;
         }
 
-        // PUT: items/{itemId}/relations/{targetItemId}
+        // PUT: items/{mainItemId}/relations/{targetItemId}
         [HttpPut]
         [Route("{targetItemId}")]
         public async Task<ActionResult> CreateAsync(int mainItemId, int targetItemId)
@@ -28,12 +28,12 @@ namespace Saal.ItemManager.Api.Controllers
             return Ok();
         }
 
-        // DELETE: items/{itemId}/relations/{targetItemId}
+        // PUT: items/{mainItemId}/relations/{targetItemId}
         [HttpDelete]
         [Route("{targetItemId}")]
-        public async Task<ActionResult> DeleteAsync(int parentItemId, int childItemId)
+        public async Task<ActionResult> DeleteAsync(int mainItemId, int targetItemId)
         {
-            var isItemFound = await ItemService.RemoveRelationAsync(parentItemId, childItemId);
+            var isItemFound = await ItemService.RemoveRelationAsync(mainItemId, targetItemId);
 
             if (!isItemFound)
                 return NotFound();

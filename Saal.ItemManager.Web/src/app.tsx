@@ -1,6 +1,6 @@
 import React from "react";
-import { ItemComponent } from "./item";
+import { ItemPage } from "./pages";
 
-export const App = () => {
-  return <ItemComponent />;
+export const App: React.FC = () => {
+  return <ItemPage />;
 };

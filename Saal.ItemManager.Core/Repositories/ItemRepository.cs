@@ -6,8 +6,7 @@ namespace Saal.ItemManager.Core.Repositories
     {
         Task<List<Item>> GetAllAsync();
         Task<Item?> GetAsync(int id);
-        Task<int> CreateAsync(ItemRequest item);
-        Task<bool> UpdateAsync(int id, Item item);
         Task<int> DeleteAsync(int id);
+        Task<int> SaveAsync(List<Item> itemList);
     }
 }
