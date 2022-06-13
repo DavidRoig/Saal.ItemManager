@@ -14,7 +14,7 @@ export const ItemPage: React.FC = () => {
   const [items, setItems] = React.useState<Item[]>([]);
   const [itemsFiltered, setItemsFiltered] = React.useState<Item[]>([]);
 
-  const [filter, setFilter] = React.useState<number>(null);
+  const [itemIdSelected, setItemIdSelected] = React.useState<number>(null);
 
   React.useEffect(() => {
     getItems().then((items) => {
@@ -24,25 +24,23 @@ export const ItemPage: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    if (!filter) {
+    if (!itemIdSelected) {
       setItemsFiltered(items);
       return;
     }
 
-    const result = items.filter((item) => {
-      return item.id === filter;
-    });
+    const result = items.filter((item) => item.id === itemIdSelected);
 
     setItemsFiltered(result);
-  }, [filter, items]);
+  }, [itemIdSelected, items]);
 
-  const removeItemHandler = (id: number) => {
-    removeItem(id).then((response) => {
+  const removeItemHandler = (itemIdToRemove: number) => {
+    removeItem(itemIdToRemove).then((response) => {
       if (response.status !== 200) {
         throw new Error("Opps... Item could not be deleted.");
       }
 
-      const itemsAvalable = items.filter((item) => item.id !== id);
+      const itemsAvalable = items.filter((item) => item.id !== itemIdToRemove);
       setItems(itemsAvalable);
     });
   };
@@ -57,7 +55,7 @@ export const ItemPage: React.FC = () => {
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Item" />}
         onChange={(e, value: Item) => {
-          setFilter(value?.id);
+          setItemIdSelected(value?.id);
         }}
       />
       <ItemListComponent
