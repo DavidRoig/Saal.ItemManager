@@ -6,7 +6,7 @@ namespace Saal.ItemManager.Core.Services
     {
         Task<Item?> GetAsync(int itemId);
         Task<List<Item>> GetAllAsync();
-        Task<int> CreateAsync(ItemRequest item);
+        Task<Item> CreateAsync(ItemRequest item);
         Task<bool> UpdateAsync(int itemId, ItemRequest item);
         Task<bool> DeleteAsync(int itemId);
         Task<bool> AddRelationAsync(int mainItemId, int targetItemId);

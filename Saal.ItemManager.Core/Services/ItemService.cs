@@ -16,7 +16,7 @@ namespace Saal.ItemManager.Core.Services
 
         public async Task<Item?> GetAsync(int id) => await _itemRepository.GetAsync(id);
 
-        public async Task<int> CreateAsync(ItemRequest item)
+        public async Task<Item> CreateAsync(ItemRequest item)
         {
             var itemList = await _itemRepository.GetAllAsync();
 
@@ -25,7 +25,7 @@ namespace Saal.ItemManager.Core.Services
 
             await _itemRepository.SaveAsync(itemList);
 
-            return newItem.Id;
+            return newItem;
         }
 
         public async Task<bool> UpdateAsync(int id, ItemRequest item)

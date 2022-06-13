@@ -35,17 +35,10 @@ namespace Saal.ItemManager.Api.Controllers
 
         // POST: items
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public async Task<ActionResult<int>> CreateAsync(ItemRequest item)
-        {
-            var result = await _itemService.CreateAsync(item);
-
-            return Ok(result);
-        }
+        public async Task<ActionResult<Item>> CreateAsync([FromForm] ItemRequest item) => Ok(await _itemService.CreateAsync(item));
 
         // PUT: items/{id}
         [HttpPut]
-        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> UpdateAsync(int id, ItemRequest item)
         {
             var isItemFound = await _itemService.UpdateAsync(id, item);

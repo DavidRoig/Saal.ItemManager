@@ -18,3 +18,10 @@ export const removeItem = (itemId: number): Promise<Response> => {
     method: "DELETE",
   });
 };
+
+export const CreateItem = (item: Item): Promise<Response> => {
+  return fetch(`${AppConstants.apiUrl}Items`, {
+    method: "POST",
+    body: JSON.stringify(item),
+  }).then((response) => response.json());
+};

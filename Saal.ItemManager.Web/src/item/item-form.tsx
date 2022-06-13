@@ -6,14 +6,25 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { Item } from ".";
 
 interface Props {
   isOpen: boolean;
   handleClose: () => void;
+  handleSave: (newItem: Item) => void;
 }
 
 export const ItemFormComponent: React.FC<Props> = (props) => {
-  const { isOpen, handleClose } = props;
+  const { isOpen, handleClose, handleSave } = props;
+  const [formValues, setFormValues] = React.useState<Item>(CreateEmptyItem());
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [id]: value,
+    });
+  };
 
   return (
     <div>
@@ -31,6 +42,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             type="text"
             fullWidth
             variant="standard"
+            onChange={handleInputChange}
           />
           <TextField
             autoFocus
@@ -40,6 +52,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             type="text"
             fullWidth
             variant="standard"
+            onChange={handleInputChange}
           />
           <TextField
             autoFocus
@@ -49,13 +62,22 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             type="text"
             fullWidth
             variant="standard"
+            onChange={handleInputChange}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Save</Button>
+          {/* <Button onClick={handleSave}>Save</Button> */}
+          <Button onClick={() => handleSave(formValues)}>Save</Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 };
+
+const CreateEmptyItem = (): Item => ({
+  id: 0,
+  name: "",
+  type: "",
+  description: "",
+});

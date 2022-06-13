@@ -2,6 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import {
+  CreateItem,
   getItems,
   Item,
   ItemFormComponent,
@@ -46,8 +47,20 @@ export const ItemPage: React.FC = () => {
     });
   };
 
-  const toggleCreationMode = () => {
-    setIsCreationMode(!isCreationMode);
+  const openCreationMode = () => {
+    setIsCreationMode(true);
+  };
+
+  const closeCreationMode = () => {
+    setIsCreationMode(false);
+  };
+
+  const SaveItem = (newItem: Item) => {
+    CreateItem(newItem).then((response) => {
+      setItems([...items, response]);
+
+      setIsCreationMode(false);
+    });
   };
 
   return (
@@ -63,12 +76,13 @@ export const ItemPage: React.FC = () => {
           setItemIdSelected(value?.id);
         }}
       />
-      <Button variant={"contained"} onClick={toggleCreationMode}>
+      <Button variant={"contained"} onClick={openCreationMode}>
         Create New Item
       </Button>
       <ItemFormComponent
         isOpen={isCreationMode}
-        handleClose={toggleCreationMode}
+        handleClose={closeCreationMode}
+        handleSave={SaveItem}
       />
       <ItemListComponent
         itemList={itemsFiltered}
@@ -77,3 +91,4 @@ export const ItemPage: React.FC = () => {
     </Box>
   );
 };
+
