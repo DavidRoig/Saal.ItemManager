@@ -3,14 +3,15 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import {
   getItems,
-  getItemsByName,
   Item,
+  ItemFormComponent,
   ItemListComponent,
   removeItem,
 } from "../item";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 export const ItemPage: React.FC = () => {
+  const [isCreationMode, setIsCreationMode] = React.useState<boolean>(false);
   const [items, setItems] = React.useState<Item[]>([]);
   const [itemsFiltered, setItemsFiltered] = React.useState<Item[]>([]);
 
@@ -45,6 +46,10 @@ export const ItemPage: React.FC = () => {
     });
   };
 
+  const toggleCreationMode = () => {
+    setIsCreationMode(!isCreationMode);
+  };
+
   return (
     <Box sx={{ backgroundColor: "whitesmoke", padding: "1rem" }}>
       <Autocomplete
@@ -57,6 +62,13 @@ export const ItemPage: React.FC = () => {
         onChange={(e, value: Item) => {
           setItemIdSelected(value?.id);
         }}
+      />
+      <Button variant={"contained"} onClick={toggleCreationMode}>
+        Create New Item
+      </Button>
+      <ItemFormComponent
+        isOpen={isCreationMode}
+        handleClose={toggleCreationMode}
       />
       <ItemListComponent
         itemList={itemsFiltered}
