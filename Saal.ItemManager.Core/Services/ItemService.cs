@@ -16,11 +16,11 @@ namespace Saal.ItemManager.Core.Services
 
         public async Task<Item?> GetAsync(int id) => await _itemRepository.GetAsync(id);
 
-        public async Task<Item> CreateAsync(ItemRequest item)
+        public async Task<Item> CreateAsync(Item newItem)
         {
             var itemList = await _itemRepository.GetAllAsync();
 
-            var newItem = Item.Create(item);
+            newItem.GenerateId(); // This ID is created manually but is suppose to be done by DB
             itemList.Add(newItem);
 
             await _itemRepository.SaveAsync(itemList);

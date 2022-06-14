@@ -7,12 +7,6 @@ export const getItems = (): Promise<Item[]> => {
   );
 };
 
-export const getItemsByName = (name: string): Promise<Item[]> => {
-  return fetch(`${AppConstants.apiUrl}Items?name=${name}`).then((response) =>
-    response.json()
-  );
-};
-
 export const removeItem = (itemId: number): Promise<Response> => {
   return fetch(`${AppConstants.apiUrl}Items?id=${itemId}`, {
     method: "DELETE",
@@ -21,6 +15,9 @@ export const removeItem = (itemId: number): Promise<Response> => {
 
 export const CreateItem = (item: Item): Promise<Response> => {
   return fetch(`${AppConstants.apiUrl}Items`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
     method: "POST",
     body: JSON.stringify(item),
   }).then((response) => response.json());

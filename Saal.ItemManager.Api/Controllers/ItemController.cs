@@ -35,7 +35,7 @@ namespace Saal.ItemManager.Api.Controllers
 
         // POST: items
         [HttpPost]
-        public async Task<ActionResult<Item>> CreateAsync([FromForm] ItemRequest item) => Ok(await _itemService.CreateAsync(item));
+        public async Task<ActionResult<Item>> CreateAsync([FromBody] Item item) => Ok(await _itemService.CreateAsync(item));
 
         // PUT: items/{id}
         [HttpPut]

@@ -3,4 +3,5 @@ export interface Item {
   name: string;
   description: string;
   type: string;
+  relations: number[];
 }

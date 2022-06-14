@@ -67,11 +67,10 @@ export const ItemPage: React.FC = () => {
     <Box sx={{ backgroundColor: "whitesmoke", padding: "1rem" }}>
       <Autocomplete
         disablePortal
-        id="combo-box-demo"
         options={items}
         getOptionLabel={(option: Item) => option.name || ""}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Item" />}
+        renderInput={(params) => <TextField {...params} label="Search Items" />}
         onChange={(e, value: Item) => {
           setItemIdSelected(value?.id);
         }}
@@ -85,6 +84,7 @@ export const ItemPage: React.FC = () => {
       </Button>
       <ItemFormComponent
         isOpen={isCreationMode}
+        items={items}
         handleClose={closeCreationMode}
         handleSave={SaveItem}
       />

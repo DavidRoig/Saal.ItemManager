@@ -7,16 +7,17 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Item } from "..";
-import ItemRelationComponent from "./item-relation";
+import { ItemRelationComponent } from "./item-relation";
 
 interface Props {
   isOpen: boolean;
   handleClose: () => void;
   handleSave: (newItem: Item) => void;
+  items: Item[];
 }
 
 export const ItemFormComponent: React.FC<Props> = (props) => {
-  const { isOpen, handleClose, handleSave } = props;
+  const { isOpen, handleClose, handleSave, items } = props;
   const [formValues, setFormValues] = React.useState<Item>(CreateEmptyItem());
 
   const handleInputChange = (e) => {
@@ -46,7 +47,6 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             onChange={handleInputChange}
           />
           <TextField
-            autoFocus
             margin="dense"
             id="type"
             label="Type"
@@ -56,7 +56,6 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             onChange={handleInputChange}
           />
           <TextField
-            autoFocus
             margin="dense"
             id="description"
             label="Description"
@@ -65,11 +64,18 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             variant="standard"
             onChange={handleInputChange}
           />
-          <ItemRelationComponent />
+          <ItemRelationComponent items={items} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={() => handleSave(formValues)}>Save</Button>
+          <Button
+            onClick={() => {
+              console.log(formValues);
+              handleSave(formValues);
+            }}
+          >
+            Save
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
@@ -81,4 +87,5 @@ const CreateEmptyItem = (): Item => ({
   name: "",
   type: "",
   description: "",
+  relations: [],
 });

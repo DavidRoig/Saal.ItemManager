@@ -2,8 +2,8 @@
 {
     public class ItemRequest
     {
-        public string Name { get; set; } = "Default Name";
-        public string Description { get; set; } = "Default Description";
-        public string Type { get; set; } = "Default Type";
+        public string Name { get; set; } 
+        public string Description { get; set; }
+        public string Type { get; set; } 
     }
 }
