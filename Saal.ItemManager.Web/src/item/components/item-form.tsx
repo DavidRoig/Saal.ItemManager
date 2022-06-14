@@ -18,26 +18,28 @@ interface Props {
   handleClose: () => void;
   handleSave: (newItem: Item) => void;
   items: Item[];
+  itemToEdit: Item;
+  setItemToEdit: (item: Item) => void;
 }
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export const ItemFormComponent: React.FC<Props> = (props) => {
-  const { isOpen, handleClose, handleSave, items } = props;
-  const [formValues, setFormValues] = React.useState<Item>(CreateEmptyItem());
+  const { isOpen, handleClose, handleSave, items, itemToEdit, setItemToEdit } =
+    props;
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    setFormValues({
-      ...formValues,
+    setItemToEdit({
+      ...itemToEdit,
       [id]: value,
     });
   };
 
   const ItemRelationsOnChangeHandler = (_event, itemsSelected: Item[]) => {
-    formValues.relations = itemsSelected.map((item) => item.id);
-    setFormValues(formValues);
+    itemToEdit.relations = itemsSelected.map((item) => item.id);
+    setItemToEdit(itemToEdit);
   };
 
   return (
@@ -110,7 +112,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
           <Button onClick={handleClose}>Cancel</Button>
           <Button
             onClick={() => {
-              handleSave(formValues);
+              handleSave(itemToEdit);
             }}
           >
             Save
@@ -120,11 +122,3 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
     </div>
   );
 };
-
-const CreateEmptyItem = (): Item => ({
-  id: 0,
-  name: "",
-  type: "",
-  description: "",
-  relations: [],
-});

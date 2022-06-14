@@ -38,12 +38,14 @@ export const ItemListComponent: React.FC<Props> = (props) => {
               <Typography gutterBottom variant="body2" component="div">
                 {item.description}
               </Typography>
-              {item.relations.length > 0 && (
-                <Typography gutterBottom variant="body2" component="div">
-                  Related with Items: {item.relations.join(",")}
-                </Typography>
-              )}
             </CardContent>
+            {item.relations.length > 0 && (
+              <CardContent>
+                <Typography gutterBottom variant="body2" component="div">
+                  Ids of related items: {item.relations.join(",")}
+                </Typography>
+              </CardContent>
+            )}
             <CardActions>
               <IconButton onClick={() => editHandler(item.id)}>
                 <CreateIcon />

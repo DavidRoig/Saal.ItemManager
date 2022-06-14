@@ -17,6 +17,7 @@ export const ItemPage: React.FC = () => {
   const [itemsFiltered, setItemsFiltered] = React.useState<Item[]>([]);
 
   const [itemIdSelected, setItemIdSelected] = React.useState<number>(null);
+  const [newItem, setNewItem] = React.useState<Item>(CreateEmptyItem());
 
   React.useEffect(() => {
     getItems().then((items) => {
@@ -88,6 +89,8 @@ export const ItemPage: React.FC = () => {
         items={items}
         handleClose={closeCreationMode}
         handleSave={SaveItem}
+        itemToEdit={newItem}
+        setItemToEdit={setNewItem}
       />
       <ItemListComponent
         itemList={itemsFiltered}
@@ -97,3 +100,11 @@ export const ItemPage: React.FC = () => {
   );
 };
 
+const CreateEmptyItem = (): Item => ({
+  id: 0,
+  name: "",
+  type: "",
+  description: "",
+  relations: [],
+});
+  
