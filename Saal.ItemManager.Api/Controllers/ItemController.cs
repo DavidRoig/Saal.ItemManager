@@ -39,7 +39,7 @@ namespace Saal.ItemManager.Api.Controllers
 
         // PUT: items/{id}
         [HttpPut]
-        public async Task<ActionResult> UpdateAsync(int id, ItemRequest item)
+        public async Task<ActionResult> UpdateAsync(int id, Item item)
         {
             var isItemFound = await _itemService.UpdateAsync(id, item);
 

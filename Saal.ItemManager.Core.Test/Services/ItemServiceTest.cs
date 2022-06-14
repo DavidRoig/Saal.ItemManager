@@ -15,7 +15,7 @@ namespace Saal.ItemManager.Core.UnitTest.Services
         private readonly Mock<IItemRepository> _itemRepository = new Mock<IItemRepository>();
 
         private static readonly int dummyItemId = 1;
-        private readonly ItemRequest dummyItemRequest = new ItemRequest();
+        private readonly Item dummyItemRequest = new Item();
         private readonly List<Item> dummyItemList = CreateDummyItemList(dummyItemId);
 
         public ItemServiceTest()
