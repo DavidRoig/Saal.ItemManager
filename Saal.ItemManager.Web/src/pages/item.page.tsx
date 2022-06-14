@@ -76,7 +76,11 @@ export const ItemPage: React.FC = () => {
           setItemIdSelected(value?.id);
         }}
       />
-      <Button variant={"contained"} onClick={openCreationMode}>
+      <Button
+        variant={"contained"}
+        onClick={openCreationMode}
+        style={{ margin: "1rem 0" }}
+      >
         Create New Item
       </Button>
       <ItemFormComponent

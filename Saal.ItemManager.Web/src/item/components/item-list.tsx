@@ -1,6 +1,5 @@
 import {
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   IconButton,
@@ -10,7 +9,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import * as React from "react";
-import { Item } from ".";
+import { Item } from "..";
 
 interface Props {
   itemList: Item[];

@@ -6,7 +6,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Item } from ".";
+import { Item } from "..";
+import ItemRelationComponent from "./item-relation";
 
 interface Props {
   isOpen: boolean;
@@ -64,10 +65,10 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             variant="standard"
             onChange={handleInputChange}
           />
+          <ItemRelationComponent />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          {/* <Button onClick={handleSave}>Save</Button> */}
           <Button onClick={() => handleSave(formValues)}>Save</Button>
         </DialogActions>
       </Dialog>
