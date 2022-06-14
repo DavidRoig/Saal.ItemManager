@@ -37,6 +37,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
 
   const ItemRelationsOnChangeHandler = (_event, itemsSelected: Item[]) => {
     formValues.relations = itemsSelected.map((item) => item.id);
+    setFormValues(formValues);
   };
 
   return (
@@ -109,7 +110,6 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
           <Button onClick={handleClose}>Cancel</Button>
           <Button
             onClick={() => {
-              console.log(formValues);
               handleSave(formValues);
             }}
           >
