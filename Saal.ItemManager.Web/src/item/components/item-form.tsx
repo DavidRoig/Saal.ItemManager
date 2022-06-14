@@ -6,8 +6,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Checkbox from "@mui/material/Checkbox";
+import Autocomplete from "@mui/material/Autocomplete";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+
 import { Item } from "..";
-import { ItemRelationComponent } from "./item-relation";
 
 interface Props {
   isOpen: boolean;
@@ -15,6 +19,9 @@ interface Props {
   handleSave: (newItem: Item) => void;
   items: Item[];
 }
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export const ItemFormComponent: React.FC<Props> = (props) => {
   const { isOpen, handleClose, handleSave, items } = props;
@@ -26,6 +33,10 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
       ...formValues,
       [id]: value,
     });
+  };
+
+  const ItemRelationsOnChangeHandler = (_event, itemsSelected: Item[]) => {
+    formValues.relations = itemsSelected.map((item) => item.id);
   };
 
   return (
@@ -64,7 +75,35 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             variant="standard"
             onChange={handleInputChange}
           />
-          <ItemRelationComponent items={items} />
+          {items && (
+            <Autocomplete
+              multiple
+              fullWidth
+              onChange={ItemRelationsOnChangeHandler}
+              options={items}
+              disableCloseOnSelect
+              getOptionLabel={(option: Item) => option.name}
+              renderOption={(props, option, { selected }) => (
+                <li {...props}>
+                  <Checkbox
+                    icon={icon}
+                    checkedIcon={checkedIcon}
+                    style={{ marginRight: 8 }}
+                    checked={selected}
+                  />
+                  {option.name}
+                </li>
+              )}
+              style={{ paddingTop: "1rem" }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Items Related"
+                  placeholder="Items"
+                />
+              )}
+            />
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

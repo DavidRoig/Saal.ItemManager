@@ -62,6 +62,9 @@ export const ItemPage: React.FC = () => {
       setIsCreationMode(false);
     });
   };
+  const autoCompleteOnChangeHandler = (e, value: Item) => {
+    setItemIdSelected(value?.id);
+  };
 
   return (
     <Box sx={{ backgroundColor: "whitesmoke", padding: "1rem" }}>
@@ -71,9 +74,7 @@ export const ItemPage: React.FC = () => {
         getOptionLabel={(option: Item) => option.name || ""}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Search Items" />}
-        onChange={(e, value: Item) => {
-          setItemIdSelected(value?.id);
-        }}
+        onChange={autoCompleteOnChangeHandler}
       />
       <Button
         variant={"contained"}
