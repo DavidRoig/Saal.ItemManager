@@ -45,7 +45,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
   return (
     <div>
       <Dialog open={isOpen} onClose={handleClose}>
-        <DialogTitle>Create New Item</DialogTitle>
+        <DialogTitle>{itemToEdit.id ? "Edit" : "Create"} Item</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Write the details to populate an Item

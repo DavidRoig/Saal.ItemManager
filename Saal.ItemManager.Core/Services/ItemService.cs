@@ -3,6 +3,9 @@ using Saal.ItemManager.Core.Repositories;
 
 namespace Saal.ItemManager.Core.Services
 {
+    /// <summary>
+    /// Business logic class which should implement tests for all their conditions
+    /// </summary>
     public class ItemService : IItemService
     {
         private readonly IItemRepository _itemRepository;
@@ -25,7 +28,7 @@ namespace Saal.ItemManager.Core.Services
 
             await _itemRepository.SaveAsync(itemList);
 
-            return newItem;
+            return newItem; // Item is returned to be rendered on the GUI
         }
 
         public async Task<bool> UpdateAsync(int id, Item item)

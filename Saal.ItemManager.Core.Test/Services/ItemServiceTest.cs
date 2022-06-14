@@ -6,7 +6,7 @@ using Saal.ItemManager.Core.Services;
 namespace Saal.ItemManager.Core.UnitTest.Services
 {
     /// <summary>
-    /// This class verify our business logic and can be extended to the whole ItemService
+    /// This class verify our business logic and should be extended to all the conditions of ItemService
     /// </summary>
     [TestClass]
     public class ItemServiceTest

@@ -4,6 +4,9 @@ using System.Text.Json;
 
 namespace Saal.ItemManager.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Persistance layer which store/retrieve all the data
+    /// </summary>
     public class ItemJsonRepository : IItemRepository
     {
         private const string StorageFilename = "ItemStorage.json";
