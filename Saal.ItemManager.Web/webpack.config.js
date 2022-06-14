@@ -21,7 +21,7 @@ module.exports = {
         loader: "babel-loader",
       },
       {
-        test: /\.scss$/, // DRH Quitar soporte para saass??
+        test: /\.scss$/,
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,

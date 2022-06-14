@@ -48,33 +48,5 @@ namespace Saal.ItemManager.Core.Services
 
             return recordsDeleted > 0;
         }
-
-        public async Task<bool> AddRelationAsync(int mainItemId, int targetItemId)
-        {
-            var itemList = await _itemRepository.GetAllAsync();
-
-            var index = itemList.FindIndex(x => x.Id.Equals(mainItemId));
-            if (index < 0)
-                return false;
-
-            itemList[index].Relations.Add(targetItemId);
-            await _itemRepository.SaveAsync(itemList);
-
-            return true;
-        }
-
-        public async Task<bool> RemoveRelationAsync(int mainItemId, int targetItemId)
-        {
-            var itemList = await _itemRepository.GetAllAsync();
-
-            var index = itemList.FindIndex(x => x.Id.Equals(mainItemId));
-            if (index < 0)
-                return false;
-
-            itemList[index].Relations.RemoveAll(x => x.Equals(targetItemId));
-            await _itemRepository.SaveAsync(itemList);
-
-            return true;
-        }
     }
 }

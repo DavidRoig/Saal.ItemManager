@@ -22,6 +22,7 @@ export const ItemPage: React.FC = () => {
     CreateEmptyItem()
   );
 
+  // Load initial items
   React.useEffect(() => {
     GetItems().then((items) => {
       setItems(items);
@@ -29,6 +30,7 @@ export const ItemPage: React.FC = () => {
     });
   }, []);
 
+  // Select item when is selected on autocomplete component
   React.useEffect(() => {
     if (!itemIdSelected) {
       setItemsFiltered(items);
@@ -40,6 +42,7 @@ export const ItemPage: React.FC = () => {
     setItemsFiltered(result);
   }, [itemIdSelected, items]);
 
+  // Error handling on this method check the response status, but can be improved returning a result object with the error message.
   const removeItemHandler = (itemIdToRemove: number) => {
     RemoveItem(itemIdToRemove).then((response) => {
       if (response.status !== 200) {
