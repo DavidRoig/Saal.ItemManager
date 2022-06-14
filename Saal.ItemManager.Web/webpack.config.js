@@ -46,4 +46,7 @@ module.exports = {
       chunkFilename: "[id].[chunkhash].css",
     }),
   ],
+  devServer: {
+    allowedHosts: "all",
+  },
 };
