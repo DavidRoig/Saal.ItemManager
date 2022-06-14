@@ -15,6 +15,7 @@
             result.Name = item.Name;
             result.Description = item.Description;
             result.Type = item.Type;
+            result.Relations = item.Relations;
         }
     }
 }

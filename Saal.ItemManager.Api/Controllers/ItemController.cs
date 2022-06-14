@@ -39,7 +39,8 @@ namespace Saal.ItemManager.Api.Controllers
 
         // PUT: items/{id}
         [HttpPut]
-        public async Task<ActionResult> UpdateAsync(int id, Item item)
+        [Route("{id}")]
+        public async Task<ActionResult> UpdateAsync([FromRoute]int id, [FromBody] Item item)
         {
             var isItemFound = await _itemService.UpdateAsync(id, item);
 
@@ -51,7 +52,8 @@ namespace Saal.ItemManager.Api.Controllers
 
         // DELETE: items/5
         [HttpDelete]
-        public async Task<ActionResult> DeleteAsync(int id)
+        [Route("{id}")]
+        public async Task<ActionResult> DeleteAsync([FromRoute] int id)
         {
             var isItemFound = await _itemService.DeleteAsync(id);
 

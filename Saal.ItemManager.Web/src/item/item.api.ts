@@ -1,14 +1,14 @@
 import { Item } from ".";
 import { AppConstants } from "../app.constants";
 
-export const getItems = (): Promise<Item[]> => {
+export const GetItems = (): Promise<Item[]> => {
   return fetch(`${AppConstants.apiUrl}Items`).then((response) =>
     response.json()
   );
 };
 
-export const removeItem = (itemId: number): Promise<Response> => {
-  return fetch(`${AppConstants.apiUrl}Items?id=${itemId}`, {
+export const RemoveItem = (itemId: number): Promise<Response> => {
+  return fetch(`${AppConstants.apiUrl}Items/${itemId}`, {
     method: "DELETE",
   });
 };
@@ -21,4 +21,14 @@ export const CreateItem = (item: Item): Promise<Response> => {
     method: "POST",
     body: JSON.stringify(item),
   }).then((response) => response.json());
+};
+
+export const UpdateItem = (item: Item): Promise<Response> => {
+  return fetch(`${AppConstants.apiUrl}Items/${item.id}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "PUT",
+    body: JSON.stringify(item),
+  });
 };

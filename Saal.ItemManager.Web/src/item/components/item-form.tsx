@@ -59,6 +59,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             fullWidth
             variant="standard"
             onChange={handleInputChange}
+            value={itemToEdit.name}
           />
           <TextField
             margin="dense"
@@ -68,6 +69,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             fullWidth
             variant="standard"
             onChange={handleInputChange}
+            value={itemToEdit.type}
           />
           <TextField
             margin="dense"
@@ -77,6 +79,7 @@ export const ItemFormComponent: React.FC<Props> = (props) => {
             fullWidth
             variant="standard"
             onChange={handleInputChange}
+            value={itemToEdit.description}
           />
           {items && (
             <Autocomplete

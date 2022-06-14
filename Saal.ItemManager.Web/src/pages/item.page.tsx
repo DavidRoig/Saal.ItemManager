@@ -3,11 +3,12 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import {
   CreateItem,
-  getItems,
+  GetItems,
   Item,
   ItemFormComponent,
   ItemListComponent,
-  removeItem,
+  RemoveItem,
+  UpdateItem,
 } from "../item";
 import { Box, Button } from "@mui/material";
 
@@ -17,10 +18,12 @@ export const ItemPage: React.FC = () => {
   const [itemsFiltered, setItemsFiltered] = React.useState<Item[]>([]);
 
   const [itemIdSelected, setItemIdSelected] = React.useState<number>(null);
-  const [newItem, setNewItem] = React.useState<Item>(CreateEmptyItem());
+  const [itemToBeEdited, setItemToBeEdited] = React.useState<Item>(
+    CreateEmptyItem()
+  );
 
   React.useEffect(() => {
-    getItems().then((items) => {
+    GetItems().then((items) => {
       setItems(items);
       setItemsFiltered(items);
     });
@@ -38,7 +41,7 @@ export const ItemPage: React.FC = () => {
   }, [itemIdSelected, items]);
 
   const removeItemHandler = (itemIdToRemove: number) => {
-    removeItem(itemIdToRemove).then((response) => {
+    RemoveItem(itemIdToRemove).then((response) => {
       if (response.status !== 200) {
         throw new Error("Opps... Item could not be deleted.");
       }
@@ -48,7 +51,13 @@ export const ItemPage: React.FC = () => {
     });
   };
 
+  const editItemHandler = (itemToEdit: Item) => {
+    setItemToBeEdited(itemToEdit);
+    setIsCreationMode(true);
+  };
+
   const openCreationMode = () => {
+    setItemToBeEdited(CreateEmptyItem());
     setIsCreationMode(true);
   };
 
@@ -57,12 +66,23 @@ export const ItemPage: React.FC = () => {
   };
 
   const SaveItem = (newItem: Item) => {
-    CreateItem(newItem).then((response) => {
-      setItems([...items, response]);
+    if (newItem.id) UpdateItemHandler(newItem);
+    else CreateItemHandler(newItem);
+  };
 
+  const CreateItemHandler = (item: Item) => {
+    CreateItem(item).then((response) => {
+      setItems([...items, response]);
       setIsCreationMode(false);
     });
   };
+
+  const UpdateItemHandler = (item: Item) => {
+    UpdateItem(item).then((response) => {
+      setIsCreationMode(false);
+    });
+  };
+
   const autoCompleteOnChangeHandler = (e, value: Item) => {
     setItemIdSelected(value?.id);
   };
@@ -89,12 +109,13 @@ export const ItemPage: React.FC = () => {
         items={items}
         handleClose={closeCreationMode}
         handleSave={SaveItem}
-        itemToEdit={newItem}
-        setItemToEdit={setNewItem}
+        itemToEdit={itemToBeEdited}
+        setItemToEdit={setItemToBeEdited}
       />
       <ItemListComponent
         itemList={itemsFiltered}
-        errorHandler={removeItemHandler}
+        removeHandler={removeItemHandler}
+        editHandler={editItemHandler}
       />
     </Box>
   );

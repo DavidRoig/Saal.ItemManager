@@ -13,15 +13,12 @@ import { Item } from "..";
 
 interface Props {
   itemList: Item[];
-  errorHandler: (id: number) => void;
+  removeHandler: (id: number) => void;
+  editHandler: (item: Item) => void;
 }
 
 export const ItemListComponent: React.FC<Props> = (props) => {
-  const { itemList, errorHandler } = props;
-
-  const editHandler = (id: number) => {
-    console.info(id);
-  };
+  const { itemList, removeHandler, editHandler } = props;
 
   return (
     <div>
@@ -39,7 +36,7 @@ export const ItemListComponent: React.FC<Props> = (props) => {
                 {item.description}
               </Typography>
             </CardContent>
-            {item.relations.length > 0 && (
+            {item.relations?.length > 0 && (
               <CardContent>
                 <Typography gutterBottom variant="body2" component="div">
                   Ids of related items: {item.relations.join(",")}
@@ -47,10 +44,10 @@ export const ItemListComponent: React.FC<Props> = (props) => {
               </CardContent>
             )}
             <CardActions>
-              <IconButton onClick={() => editHandler(item.id)}>
+              <IconButton onClick={() => editHandler(item)}>
                 <CreateIcon />
               </IconButton>
-              <IconButton onClick={() => errorHandler(item.id)}>
+              <IconButton onClick={() => removeHandler(item.id)}>
                 <DeleteIcon />
               </IconButton>
             </CardActions>
